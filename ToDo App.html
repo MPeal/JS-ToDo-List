@@ -1,0 +1,181 @@
+<html>
+<body onload="displayList();">
+<title>To-Do List</title>
+<h1 id="head">To-Do List</h1>
+<div id="inputDiv">
+Add To List <input id="todo"></input>
+</div>
+<div id="buttonDiv">
+<button onclick="addToDo()">Add</button>   <button onclick="clearToDos()">Remove All</button>   <button onclick="toggleAll();">Toggle All</button>
+</div>
+<br>
+<div id="disp"></div>
+
+
+<script>
+var todos = [];
+
+function addToDo()
+{
+	var todo = {};
+	todo.content = document.getElementById("todo").value;
+	todo.completed = false;
+	todos.push(todo);
+	document.getElementById("todo").value = "";
+	displayList();
+}
+
+function changeToDo(position, newToDo)
+{
+	todos[position] = newToDo;
+}
+
+function removeToDo(position)
+{
+	var i = position;
+	todos.splice(i, 1);
+	displayList();
+}
+
+function clearToDos()
+{
+	todos = [];
+	displayList();
+}
+
+function complete(index)
+{
+	todos[index].completed = true;
+	displayList();
+}
+
+function completeBlue(index)
+{
+	document.getElementById("complete"+index).style.color="blue";
+}
+
+function displayList()
+{
+	//reset "disp" div to blank each time
+	document.getElementById("disp").innerHTML = "";
+	
+	//if there are no todos, display that info as a message
+	if(todos.length === 0)
+	{
+		document.getElementById("disp").innerHTML = "<br>You have no items in your to-do list!";
+	}
+	
+	//for each todo element...
+	for(var i=0; i < todos.length; i++)
+	{
+		var todo = todos[i];
+		
+		//if it's completed, display it with a slash through it...
+		if(todo.completed == true)
+		{
+			document.getElementById("disp").innerHTML += "<s>"+(i+1)+". "+todo.content+"</s><br>";
+		}
+		else //else, display it along with its own complete "button" and a delete "button"
+		{
+			document.getElementById("disp").innerHTML += (i+1)+". "+todo.content+" <em class='complete' id='complete"+i+"' onclick='complete("+i+")' style='font-size:10px;'><u>Complete</u></em>  <em class='remove' id='remove"+i+"' onclick='removeToDo("+i+")' style='font-size:10px;'><u>Remove</u></em></br>";
+		}
+	}
+}
+
+function toggleAll() //this function sets all tasks to completed.  if all are completed, it sets all to incomplete.
+{
+	var completedCount = 0;
+	//first, check if all are completed
+	for(var i=0; i<todos.length; i++)
+	{
+		var todo = todos[i];
+		if(todo.completed == true)
+		{
+			completedCount++;
+		}
+	}
+	
+	if(completedCount == todos.length) //if they're all completed, toggle all to incomplete
+	{
+		console.log("All items are completed.");
+		for(var i=0; i<todos.length; i++)
+		{
+			todos[i].completed = false;
+		}
+	}
+	else //otherwise, if some aren't completed, toggle everything to completed
+	{
+		for(var i=0; i<todos.length; i++)
+		{
+			todos[i].completed = true;
+		}
+	}
+	
+	displayList();
+}
+
+/*function changeHeadColor()
+{
+	var rVal = Math.floor(Math.random()*255);
+	var gVal = Math.floor(Math.random()*255);
+	var bVal = Math.floor(Math.random()*255);
+			
+	document.getElementById("head").style.color="rgb("+rVal+","+gVal+","+bVal+")";
+	var color = document.getElementById("head").style.color;
+	console.log("Header color changed to: "+color);
+}
+
+function twinkleHead()
+{
+	var timer = setInterval(changeHeadColor, 500);
+}*/
+
+</script>
+<style>
+h1
+{
+	width: 12%;
+	margin: auto;
+}
+#inputDiv
+{
+	font-size: 18px;
+	position: fixed;
+	left: 550px;
+	top: 100px;
+}
+
+#buttonDiv
+{
+	position: fixed;
+	left: 590px;
+	top: 135px;
+}
+
+#disp
+{
+	font-size: 18px;
+	position: fixed;
+	left: 550px;
+	top: 170px;
+	width: 275px;
+	text-align: center;
+}
+
+em.complete:hover
+{
+	color: blue;
+	cursor: hand;
+}
+
+em.remove:hover
+{
+	color: blue;
+	cursor: hand;
+}
+
+
+
+</style>
+</body>
+</html>
