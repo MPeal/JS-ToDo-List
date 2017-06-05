@@ -1,0 +1,24 @@
+<html>
+<body onload="displayList();">
+<head>
+<link rel="stylesheet" type="text/css" href="todoStyle.css"></link>
+</head>
+<title>To-Do List</title>
+<h1 id="head">To-Do List</h1>
+<div id="inputDiv">
+What To Do?         <input id="todo"></input>
+</div>
+<div id="buttonDiv">
+<button class="btn" onclick="addToDo()">Add</button>   <button id="removeButton" class="btn" onclick="clearToDos()">Remove All</button>   <button id="toggleButton" class="btn" onclick="toggleAll();">Toggle All</button>
+</div>
+<br>
+<ol id="disp"></ol>
+
+
+<script src="todoScript.js">
+</script>
+
+<style>
+</style>
+</body>
+</html>

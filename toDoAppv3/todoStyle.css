@@ -1,0 +1,169 @@
+body
+{
+	background-color: #dce0dc;
+}
+
+h1
+{
+	width: 14%;
+	margin: auto;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	text-shadow: #363535 1px 1px 3px;
+}
+ 
+#todo
+{
+  padding: 5px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+
+#todo:focus,
+#todo.focus 
+{
+  box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+
+#inputDiv
+{
+	font-size: 18px;
+	position: fixed;
+	left: 550px;
+	top: 90px;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#buttonDiv
+{
+	position: fixed;
+	left: 543px;
+	top: 135px;
+}
+
+.btn 
+{
+	color: #666;
+	background-color: #eee;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px 10px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid rgba(0,0,0,0.3);
+	border-bottom-width: 3px;
+}
+
+.btn:hover 
+{
+	background-color: #e3e3e3;
+	border-color: rgba(0,0,0,0.5);
+}
+	
+	
+.btn:active 
+{
+	background-color: #CCC;
+	border-color: rgba(0,0,0,0.9);
+}
+
+#disp
+{
+	font-size: 16px;
+	position: fixed;
+	display: inline-block;
+	left: 470px;
+	top: 160px;
+	width: 375px;
+	text-align: center;
+}
+
+ol
+{
+	counter-reset: li; /* Initiate a counter */
+    list-style: none; /* Remove default numbering */
+    *list-style: decimal; /* Keep using default numbering for IE6/7 */
+    font: 15px 'trebuchet MS', 'lucida sans';
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+ol ol
+{
+    margin: 0 0 0 2em; /* Add some left margin for inner lists */
+}
+
+.list
+{
+    position: relative;
+    display: block;
+    padding: .2em;
+    background: white;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;
+	box-shadow: 1px 1px 1px black;
+	margin: 0 0 12px 0;
+	text-align: center;
+}
+
+.list:hover
+{
+	background: #87ceeb;
+}
+
+.list:before
+{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+	box-shadow: 1px 1px 1px black;
+}
+
+.list:hover:before
+{
+	transform: rotateY(360deg);
+}
+
+.completeButton
+{
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.deleteButton
+{
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+.completeButton:hover
+{
+	color: blue;
+	cursor: hand;
+}
+
+.deleteButton:hover
+{
+	color: blue;
+	cursor: hand;
+}
